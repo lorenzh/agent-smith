@@ -4,10 +4,15 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 [![Built with Bun](https://img.shields.io/badge/built%20with-Bun-fbf0df.svg)](https://bun.com)
 
+**Every MCP server you meet, behind one face.**
+
 An MCP gateway: one MCP server that aggregates many downstream MCP servers behind a single
 endpoint. It namespaces and routes tools, resources, and prompts, runs them through a
 middleware chain, and lets you add or remove gateways and backends at runtime without a
 restart.
+
+Named after the agent in The Matrix who assimilates other programs and speaks for all of
+them at once. This one does the same to your MCP servers: many backends, one endpoint.
 
 > Status: early and pre-release. The design in [`docs/SPEC.md`](./docs/SPEC.md) is the
 > source of truth; much of the protocol layer is still stubbed.
