@@ -1,0 +1,41 @@
+name: Bug report
+description: Something is not working as expected
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. For security issues, do not file here. See SECURITY.md.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: Symptom first, then what you expected instead.
+      placeholder: Calling tool X through the gateway returns ... but I expected ...
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: Config, commands, and requests. A minimal repro helps a lot.
+      placeholder: |
+        1. gateway config: ...
+        2. start: bun run dev
+        3. request: ...
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or output
+      description: Paste the real output or stack trace in a code block.
+      render: shell
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      description: Bun version, OS, and the affected package(s).
+      placeholder: "bun 1.3.x, Linux, @agent-smith/mcp-gateway"
+    validations:
+      required: true
