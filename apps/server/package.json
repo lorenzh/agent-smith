@@ -1,0 +1,17 @@
+{
+	"name": "@agent-smith/server",
+	"version": "0.0.0",
+	"private": true,
+	"type": "module",
+	"module": "src/index.ts",
+	"scripts": {
+		"start": "bun run src/index.ts",
+		"dev": "bun run --hot src/index.ts"
+	},
+	"dependencies": {
+		"@agent-smith/mcp-gateway": "workspace:*",
+		"@agent-smith/mcp-gateway-backend-child-process": "workspace:*",
+		"@agent-smith/mcp-gateway-middleware-logging": "workspace:*",
+		"hono": "^4.6.0"
+	}
+}

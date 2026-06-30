@@ -1,14 +1,22 @@
 {
 	"name": "agent-smith",
-	"module": "index.ts",
-	"type": "module",
 	"private": true,
-	"scripts": {
-		"lint": "biome check .",
-		"format": "biome format --write .",
-		"check": "biome check --write .",
-		"prepare": "lefthook install"
+	"type": "module",
+	"description": "An MCP gateway: one MCP server that aggregates many downstream MCP servers behind a single endpoint.",
+	"license": "MIT",
+	"author": "Lorenz Hilpert",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/lorenzh/agent-smith.git"
 	},
+	"homepage": "https://github.com/lorenzh/agent-smith#readme",
+	"bugs": {
+		"url": "https://github.com/lorenzh/agent-smith/issues"
+	},
+	"workspaces": [
+		"packages/*",
+		"apps/*"
+	],
 	"devDependencies": {
 		"@biomejs/biome": "2.5.1",
 		"@types/bun": "latest",
@@ -16,5 +24,12 @@
 	},
 	"peerDependencies": {
 		"typescript": "^5"
+	},
+	"scripts": {
+		"dev": "bun run --hot apps/server/src/index.ts",
+		"lint": "biome check .",
+		"format": "biome format --write .",
+		"check": "biome check --write .",
+		"prepare": "lefthook install"
 	}
 }

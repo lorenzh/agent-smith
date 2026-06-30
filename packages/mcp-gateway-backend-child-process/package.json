@@ -1,0 +1,30 @@
+{
+	"name": "@agent-smith/mcp-gateway-backend-child-process",
+	"version": "0.0.0",
+	"type": "module",
+	"description": "Child-process (stdio) backend connector for the agent-smith MCP gateway.",
+	"license": "MIT",
+	"author": "Lorenz Hilpert",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/lorenzh/agent-smith.git",
+		"directory": "packages/mcp-gateway-backend-child-process"
+	},
+	"homepage": "https://github.com/lorenzh/agent-smith/tree/main/packages/mcp-gateway-backend-child-process#readme",
+	"bugs": {
+		"url": "https://github.com/lorenzh/agent-smith/issues"
+	},
+	"keywords": [
+		"mcp",
+		"gateway",
+		"connector",
+		"stdio",
+		"child-process"
+	],
+	"exports": {
+		".": "./src/index.ts"
+	},
+	"peerDependencies": {
+		"@agent-smith/mcp-gateway": "workspace:*"
+	}
+}

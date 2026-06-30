@@ -1,0 +1,28 @@
+{
+	"name": "@agent-smith/mcp-gateway",
+	"version": "0.0.0",
+	"type": "module",
+	"description": "Core of the agent-smith MCP gateway: contracts, connector registry, and a mutable host that aggregates downstream MCP servers.",
+	"license": "MIT",
+	"author": "Lorenz Hilpert",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/lorenzh/agent-smith.git",
+		"directory": "packages/mcp-gateway"
+	},
+	"homepage": "https://github.com/lorenzh/agent-smith/tree/main/packages/mcp-gateway#readme",
+	"bugs": {
+		"url": "https://github.com/lorenzh/agent-smith/issues"
+	},
+	"keywords": [
+		"mcp",
+		"model-context-protocol",
+		"gateway",
+		"proxy",
+		"ai"
+	],
+	"exports": {
+		".": "./src/index.ts",
+		"./hono": "./src/hono.ts"
+	}
+}

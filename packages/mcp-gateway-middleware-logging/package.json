@@ -1,0 +1,29 @@
+{
+	"name": "@agent-smith/mcp-gateway-middleware-logging",
+	"version": "0.0.0",
+	"type": "module",
+	"description": "Logging middleware for the agent-smith MCP gateway.",
+	"license": "MIT",
+	"author": "Lorenz Hilpert",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/lorenzh/agent-smith.git",
+		"directory": "packages/mcp-gateway-middleware-logging"
+	},
+	"homepage": "https://github.com/lorenzh/agent-smith/tree/main/packages/mcp-gateway-middleware-logging#readme",
+	"bugs": {
+		"url": "https://github.com/lorenzh/agent-smith/issues"
+	},
+	"keywords": [
+		"mcp",
+		"gateway",
+		"middleware",
+		"logging"
+	],
+	"exports": {
+		".": "./src/index.ts"
+	},
+	"peerDependencies": {
+		"@agent-smith/mcp-gateway": "workspace:*"
+	}
+}
