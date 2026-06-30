@@ -17,8 +17,6 @@ them at once. This one does the same to your MCP servers: many backends, one end
 > Status: early and pre-release. The design in [`docs/SPEC.md`](./docs/SPEC.md) is the
 > source of truth; much of the protocol layer is still stubbed.
 
-See [`docs/SPEC.md`](./docs/SPEC.md) for the design.
-
 ```mermaid
 graph LR
     Client[Client] --> Server[Hono server]
@@ -50,9 +48,9 @@ bun run check    # format + lint with biome
 
 ## Status
 
-Early. The mutable host, connector registry, middleware contract, and admin API work and
-are covered by tests. The MCP protocol plumbing (SDK transport, namespacing, fan-out) is
-stubbed and marked with `TODO`. Built with [Bun](https://bun.com).
+Early. The mutable host, connector registry, middleware contract, namespacing, and admin
+API work and are covered by tests. The MCP protocol plumbing (SDK transport, fan-out, the
+per-session Server facade) is stubbed and marked with `TODO`. Built with [Bun](https://bun.com).
 
 ## Contributing
 

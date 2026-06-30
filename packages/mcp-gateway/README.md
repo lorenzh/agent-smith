@@ -71,6 +71,6 @@ import { honoMcp } from "@agent-smith/mcp-gateway/hono";
 
 ## Status
 
-Early. The mutable host, registry, and contracts are in place and exercised by tests.
-The MCP protocol plumbing (SDK transport, Pool, namespacing, fan-out) is stubbed and
-marked with `TODO`. See the spec for what each layer will do.
+Early. The mutable host, registry, namespacing, and contracts are in place and exercised
+by tests. The MCP protocol plumbing (SDK transport, Pool, fan-out) is stubbed and marked
+with `TODO`. See the spec for what each layer will do.
