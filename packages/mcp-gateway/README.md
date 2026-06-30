@@ -15,17 +15,9 @@ It owns the contracts everything else builds on:
 
 See [`docs/SPEC.md`](../../docs/SPEC.md) for the full design.
 
-```mermaid
-graph TD
-    Host[GatewayHost] -->|owns many| GW[Gateway]
-    GW -->|per session| Server[GatewayServer facade]
-    GW -->|shared| Pool[Pool]
-    GW -->|chain| MW[Middleware]
-    Pool -->|one per backend| Backend[Backend<br/>Client + supervision]
-    Backend --> Connector[BackendConnector]
-    Connector --> Transport[Transport]
-    Registry[ConnectorRegistry] -. "type to factory" .-> Connector
-```
+![Components: GatewayHost owns gateways, each gateway has a pool of supervised backends wired to connectors and transports](./diagrams/components.png)
+
+<!-- Diagram source: packages/mcp-gateway/diagrams/components.mmd -->
 
 ## Install
 

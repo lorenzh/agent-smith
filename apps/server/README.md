@@ -4,16 +4,9 @@ The agent-smith server: a [Hono](https://hono.dev) app that loads a config, buil
 mutable `GatewayHost`, and exposes every gateway over HTTP. This is where you wire up
 which connectors and middleware the deployment supports. Private, not published.
 
-```mermaid
-graph TD
-    Req[HTTP request] --> App[Hono app]
-    App --> Root["GET /"]
-    App --> Dyn["ALL /:gateway/mcp"]
-    App --> Admin["/admin/*"]
-    Dyn -->|lookup| Host[GatewayHost]
-    Admin -->|mutate, no restart| Host
-    Host -->|owns| GW[Gateway]
-```
+![Server routing: the Hono app dispatches the root, dynamic gateway, and admin routes against a mutable GatewayHost](./diagrams/routing.png)
+
+<!-- Diagram source: apps/server/diagrams/routing.mmd -->
 
 ## Run
 

@@ -1,0 +1,6 @@
+graph LR
+    Client[Client] --> Server[Hono server]
+    Server -->|/:gateway/mcp| Gateway
+    Gateway --> Middleware --> Pool
+    Pool -->|Connector| B1[Backend MCP server]
+    Pool -->|Connector| B2[Backend MCP server]

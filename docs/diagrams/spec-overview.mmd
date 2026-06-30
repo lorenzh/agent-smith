@@ -1,0 +1,21 @@
+graph LR
+    Client[Client<br/>Claude / LLM]
+
+    subgraph Host[HTTP host]
+        RA["/project-a/mcp"]
+        RB["/project-b/mcp"]
+    end
+
+    subgraph GW[Gateway: project-a]
+        MW[Middleware chain]
+        Pool[Pool<br/>namespace map]
+    end
+
+    S1[Backend MCP server 1]
+    S2[Backend MCP server 2]
+
+    Client -->|tools/* resources/* prompts/*| RA
+    Client --> RB
+    RA --> MW --> Pool
+    Pool -->|Connector| S1
+    Pool -->|Connector| S2

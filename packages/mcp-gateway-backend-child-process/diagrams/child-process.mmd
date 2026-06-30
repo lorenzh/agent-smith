@@ -1,0 +1,4 @@
+graph LR
+    Pool[Pool] --> Backend[Backend]
+    Backend --> Conn[childProcess connector]
+    Conn -->|Bun.spawn + stdio| Proc[MCP server process]

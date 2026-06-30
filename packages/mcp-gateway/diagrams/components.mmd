@@ -1,0 +1,9 @@
+graph TD
+    Host[GatewayHost] -->|owns many| GW[Gateway]
+    GW -->|per session| Server[GatewayServer facade]
+    GW -->|shared| Pool[Pool]
+    GW -->|chain| MW[Middleware]
+    Pool -->|one per backend| Backend[Backend<br/>Client + supervision]
+    Backend --> Connector[BackendConnector]
+    Connector --> Transport[Transport]
+    Registry[ConnectorRegistry] -. "type to factory" .-> Connector

@@ -6,29 +6,9 @@ list ops) or routed to one backend (for call ops), passed through a middleware c
 and returned merged. Everything is mutable at runtime: gateways, backends, and
 middleware can be added or removed without a restart.
 
-```mermaid
-graph LR
-    Client[Client<br/>Claude / LLM]
+![Overview: clients hit per-gateway HTTP routes, each gateway runs a middleware chain and pool that fans out to backends](./diagrams/spec-overview.png)
 
-    subgraph Host[HTTP host]
-        RA["/project-a/mcp"]
-        RB["/project-b/mcp"]
-    end
-
-    subgraph GW[Gateway: project-a]
-        MW[Middleware chain]
-        Pool[Pool<br/>namespace map]
-    end
-
-    S1[Backend MCP server 1]
-    S2[Backend MCP server 2]
-
-    Client -->|tools/* resources/* prompts/*| RA
-    Client --> RB
-    RA --> MW --> Pool
-    Pool -->|Connector| S1
-    Pool -->|Connector| S2
-```
+<!-- Diagram source: docs/diagrams/spec-overview.mmd -->
 
 ## Packages
 
@@ -142,35 +122,9 @@ Internal to core. Holds the live Backends for one Gateway and owns the namespace
 - The map is rebuilt whenever a backend is added, removed, or fires `list_changed`.
 - `ping` is answered locally; `logging/setLevel` broadcasts to every backend.
 
-```mermaid
-sequenceDiagram
-    participant C as Client
-    participant M as Middleware
-    participant P as Pool
-    participant B1 as Backend fs
-    participant B2 as Backend github
+![Pool routing: list ops fan out to every backend and merge, call ops resolve the namespace and route to one backend](./diagrams/pool-routing.png)
 
-    Note over C,B2: list op - fan out, prefix, merge
-    C->>M: tools/list
-    M->>P: next()
-    par
-        P->>B1: tools/list
-    and
-        P->>B2: tools/list
-    end
-    B1-->>P: tools (fs__*)
-    B2-->>P: tools (github__*)
-    P-->>M: merged
-    M-->>C: merged list
-
-    Note over C,B2: call op - route to one
-    C->>M: tools/call github__search
-    M->>P: next()
-    P->>B2: search (prefix stripped)
-    B2-->>P: result
-    P-->>M: result
-    M-->>C: result
-```
+<!-- Diagram source: docs/diagrams/pool-routing.mmd -->
 
 ### Middleware
 

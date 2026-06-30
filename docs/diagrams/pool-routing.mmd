@@ -1,0 +1,27 @@
+sequenceDiagram
+    participant C as Client
+    participant M as Middleware
+    participant P as Pool
+    participant B1 as Backend fs
+    participant B2 as Backend github
+
+    Note over C,B2: list op - fan out, prefix, merge
+    C->>M: tools/list
+    M->>P: next()
+    par
+        P->>B1: tools/list
+    and
+        P->>B2: tools/list
+    end
+    B1-->>P: tools (fs__*)
+    B2-->>P: tools (github__*)
+    P-->>M: merged
+    M-->>C: merged list
+
+    Note over C,B2: call op - route to one
+    C->>M: tools/call github__search
+    M->>P: next()
+    P->>B2: search (prefix stripped)
+    B2-->>P: result
+    P-->>M: result
+    M-->>C: result

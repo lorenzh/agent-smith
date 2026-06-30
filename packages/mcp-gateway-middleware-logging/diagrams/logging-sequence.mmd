@@ -1,0 +1,10 @@
+sequenceDiagram
+    participant Op as Operation
+    participant L as logging()
+    participant N as next() / backend
+    Op->>L: enter
+    Note right of L: start timer
+    L->>N: await next()
+    N-->>L: done
+    Note right of L: log kind, backends, elapsed
+    L-->>Op: return

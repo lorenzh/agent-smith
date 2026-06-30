@@ -104,3 +104,20 @@ bun --hot ./index.ts
 ```
 
 For more information, read the Bun API docs in `node_modules/bun-types/docs/**.mdx`.
+
+## Docs diagrams
+
+Diagrams in the docs are committed PNGs, not inline mermaid (GitHub markdown here isn't
+set up to render mermaid). Each diagram keeps its definition in a `.mmd` file next to the
+doc, under a `diagrams/` folder, with the rendered `.png` beside it. The markdown
+references the PNG via `![alt](./diagrams/x.png)` followed by a
+`<!-- Diagram source: path/to/x.mmd -->` comment.
+
+To change a diagram, edit the `.mmd` source and re-render:
+
+```sh
+bun x @mermaid-js/mermaid-cli@11 -i path/to.mmd -o path/to.png -b white -s 3 -p pptr.json
+```
+
+where `pptr.json` is `{ "args": ["--no-sandbox", "--disable-setuid-sandbox"] }`. The
+`--no-sandbox` flag is required because Chromium's sandbox is blocked in this environment.

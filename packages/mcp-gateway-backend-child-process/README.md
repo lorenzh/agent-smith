@@ -5,12 +5,9 @@ raw child process and talks to it over stdio. This is the simplest isolation mod
 covers most MCP servers shipping today. Other isolation models (docker, microvm) live in
 their own packages behind the same `BackendConnector` contract.
 
-```mermaid
-graph LR
-    Pool[Pool] --> Backend[Backend]
-    Backend --> Conn[childProcess connector]
-    Conn -->|Bun.spawn + stdio| Proc[MCP server process]
-```
+![Child process connector: the backend's connector spawns an MCP server process with Bun.spawn and talks over stdio](./diagrams/child-process.png)
+
+<!-- Diagram source: packages/mcp-gateway-backend-child-process/diagrams/child-process.mmd -->
 
 ## Install
 

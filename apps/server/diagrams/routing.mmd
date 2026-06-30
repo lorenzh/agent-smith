@@ -1,0 +1,8 @@
+graph TD
+    Req[HTTP request] --> App[Hono app]
+    App --> Root["GET /"]
+    App --> Dyn["ALL /:gateway/mcp"]
+    App --> Admin["/admin/*"]
+    Dyn -->|lookup| Host[GatewayHost]
+    Admin -->|mutate, no restart| Host
+    Host -->|owns| GW[Gateway]

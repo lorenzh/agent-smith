@@ -17,14 +17,9 @@ them at once. This one does the same to your MCP servers: many backends, one end
 > Status: early and pre-release. The design in [`docs/SPEC.md`](./docs/SPEC.md) is the
 > source of truth; much of the protocol layer is still stubbed.
 
-```mermaid
-graph LR
-    Client[Client] --> Server[Hono server]
-    Server -->|/:gateway/mcp| Gateway
-    Gateway --> Middleware --> Pool
-    Pool -->|Connector| B1[Backend MCP server]
-    Pool -->|Connector| B2[Backend MCP server]
-```
+![Architecture: client to Hono server to gateway, middleware, pool, and backends](./docs/diagrams/architecture.png)
+
+<!-- Diagram source: docs/diagrams/architecture.mmd -->
 
 ## Layout
 

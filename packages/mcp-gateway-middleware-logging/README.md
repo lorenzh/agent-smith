@@ -3,18 +3,9 @@
 A [`@agent-smith/mcp-gateway`](../mcp-gateway) middleware that logs every gateway operation with
 timing. Wraps `next()` so it covers both the inbound and outbound side of a call.
 
-```mermaid
-sequenceDiagram
-    participant Op as Operation
-    participant L as logging()
-    participant N as next() / backend
-    Op->>L: enter
-    Note right of L: start timer
-    L->>N: await next()
-    N-->>L: done
-    Note right of L: log kind, backends, elapsed
-    L-->>Op: return
-```
+![Logging middleware: starts a timer on enter, awaits next(), then logs kind, backends, and elapsed time on the way out](./diagrams/logging-sequence.png)
+
+<!-- Diagram source: packages/mcp-gateway-middleware-logging/diagrams/logging-sequence.mmd -->
 
 ## Install
 
