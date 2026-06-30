@@ -1,0 +1,16 @@
+pre-commit:
+  piped: true
+  jobs:
+    - name: format
+      glob: "*.{js,ts,jsx,tsx,json,jsonc,css}"
+      run: bunx biome format --write --no-errors-on-unmatched --files-ignore-unknown=true --colors=off {staged_files}
+      stage_fixed: true
+    - name: lint
+      glob: "*.{js,ts,jsx,tsx,json,jsonc,css}"
+      run: bunx biome lint --write --no-errors-on-unmatched --files-ignore-unknown=true --colors=off {staged_files}
+      stage_fixed: true
+
+pre-push:
+  jobs:
+    - name: test
+      run: bun test
